@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <h1>Hello, World!</h1>
+      <button className="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs  font-medium leading-tight"></button>
     </>
   );
 }
