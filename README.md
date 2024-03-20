@@ -29,8 +29,16 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
+## Prettier Lint の参考
+
+https://qiita.com/Stellarium/items/095ca74299a50016c321
+
 <!-- Command -->
 
 ## Prettier 実行
 
 npx prettier . --write
+
+## lint 実行
+
+npm run lint
