@@ -5,18 +5,32 @@ import { getAllPokemon, getPokemon } from "./utils/pokemon.ts";
 function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
   const [loading, setLoading] = useState(true);
+  const [pokemonData, setPokemonData] = useState([]);
+
+  const loadPokemon: any = async (data: any): void => {
+    const loadPokemonData: any = await Promise.all(
+      data.map((pokemon: any) => {
+        const pokemonRecord: any = getPokemon(pokemon.url);
+        return pokemonRecord;
+      })
+    );
+    setPokemonData(loadPokemonData);
+  };
 
   useEffect(() => {
     const fetchPokemonData = async () => {
       // 全てのポケモンデータを取得
       const res: any = await getAllPokemon(initialURL);
-      console.log(res);
+      // 各ポケモンの詳細なデータを取得
+      loadPokemon(res.results);
 
       setLoading(false);
     };
 
     fetchPokemonData();
   }, []);
+
+  console.log(pokemonData);
 
   return (
     <>
