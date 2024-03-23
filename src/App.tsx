@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
+import Card from "./components/Card/Card";
 import { getAllPokemon, getPokemon } from "./utils/pokemon.ts";
 
 function App() {
@@ -34,8 +35,15 @@ function App() {
 
   return (
     <>
-      {loading ? <p>ロード中・・・</p> : <p>ポケモンデータを取得しました</p>}
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png" />
+      {loading ? (
+        <p>ロード中・・・</p>
+      ) : (
+        <div className="flex flex-wrap">
+          {pokemonData.map((pokemon, index) => {
+            return <Card key={index} pokemon={pokemon} />;
+          })}
+        </div>
+      )}
       ;
     </>
   );
